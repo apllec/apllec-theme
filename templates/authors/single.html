@@ -53,6 +53,8 @@
           {% if author_page and author_page.content %}
           <div class="text-center">{{ author_page.content | safe }}</div>
           {% endif %}
+          <hr />
+          <h3>Posts de {{ title }}</h3>
           <div class="card-list">
             {% for page in term.pages %}
             <div class="card">
