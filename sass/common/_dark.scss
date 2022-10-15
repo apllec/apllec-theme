@@ -3,8 +3,8 @@
 // Source: https://material.io/design/color/dark-theme.html
 
 $body-bg-dark: $gray-900;
-$body-overlay-dark: darken($body-bg-dark, 2.5%);
-$border-dark: darken($body-bg-dark, 2.5%);
+$body-overlay-dark: darken($body-bg-dark, 4%);
+$border-dark: darken($body-bg-dark, 6%);
 $body-color-dark: $gray-300;
 $dots-dark: darken($body-color-dark, 50%);
 
@@ -330,4 +330,10 @@ body.dark .copy-status:active::after {
   content: "Copied";
   display: block;
   color: $link-color-dark;
+}
+
+// Search bar
+// todo: make this work
+body.dark #suggestion {
+  background-color: $body-bg-dark !important;
 }
