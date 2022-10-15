@@ -1,9 +1,8 @@
-name = "adidoks"
-description = "AdiDoks is a Zola theme helping you build modern documentation."
+name = "apllec"
+description = "Apllec Zola theme for the apllec blog."
 license = "MIT"
-homepage = "https://github.com/aaranxu/adidoks"
+homepage = "https://github.com/apllec/apllec-theme"
 min_version = "0.15.0"
-demo = "https://adidoks.netlify.app/"
 
 [extra]
 
@@ -12,6 +11,6 @@ name = "Aaran Xu"
 homepage = "https://github.com/aaranxu"
 
 [original]
-author =  "h-enk"
+author = "h-enk"
 homepage = "https://getdoks.org/"
 repo = "https://github.com/h-enk/doks"

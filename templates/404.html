@@ -1,18 +1,18 @@
 {% extends "base.html" %}
 
 {% block seo %}
-  {{ super() }} 
-  {% set title = "404 Page not found" %}
-  
-  {% if config.title %}
-    {% set title_addition = title_separator ~ config.title %}
-  {% else %}
-    {% set title_addition = "" %}
-  {% endif %}
-  
-  {% set description = config.description %}
-  
-  {{ macros_head::seo(title=title, title_addition=title_addition, description=description, is_404=true) }}
+{{ super() }}
+{% set title = "404 Page not found" %}
+
+{% if config.title %}
+{% set title_addition = title_separator ~ config.title %}
+{% else %}
+{% set title_addition = "" %}
+{% endif %}
+
+{% set description = config.description %}
+
+{{ macros_head::seo(title=title, title_addition=title_addition, description=description, is_404=true) }}
 {% endblock seo %}
 
 {% block content %}
@@ -21,13 +21,30 @@
     <section class="section container-fluid mt-n3 pb-3">
       <div class="row justify-content-center">
         <div class="row justify-content-center">
-					<div class="col-md-12 col-lg-10 col-xxl-8">
-						<article>
-							<h1 class="text-center">Page not found :(</h1>
-							<p class="text-center">The page you are looking for doesn't exist or has been moved.</p>
-						</article>
-					</div>
-				</div>
+          <div class="col-md-12 col-lg-10 col-xxl-8">
+            <article>
+              <h1 class="text-center">Page not found :(</h1>
+              <p class="text-center">The page you are looking for doesn't exist or has been moved.</p>
+              <hr />
+              {% set blog_posts = get_section(path="blog/_index.md") %}
+              {% set number_of_posts = blog_posts.pages | length %}
+              {% set post_index = get_random(end=number_of_posts) %}
+              {% set random_post = blog_posts.pages | nth(n=post_index) %}
+              <h2 class="text-center">Checkout this random post !</h2>
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="h3"><a class="stretched-link text-body" href="{{ random_post.permalink }}">{{
+                      random_post.title }}</a></h2>
+                  {% if random_post.extra.lead %}
+                  <p class="lead">{{ random_post.extra.lead | safe }}</p>{% elif
+                  random_post.description %}<p class="lead">{{ random_post.description | safe }}</p>{%
+                  endif %}
+                  {{ macros_publish::page_publish_metadata(page=random_post) }}
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
   </div>
